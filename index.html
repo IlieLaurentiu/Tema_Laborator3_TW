@@ -1,27 +1,62 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="styles.css">
-    </head>
-    <body>
-        <div id="main">
-            <div id="iphone">
-              <img src="https://i.ibb.co/HHZk9Lx/i-Phone-7-Plus-Jet-Black.png" width="300"/>
-            </div>
-            <div id="camera">
-              <img src="https://i.ibb.co/Kjx7TRJ/Polaroid-Camera.png" width="300"/>
-            </div>
-        </div>
-        
-        <script src="parallax.js" async defer></script>
-    </body>
+<html lang="ro">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Parallax Demo</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+    #main {
+      height: 100vh;
+      width: 100%;
+      background-color: #fafafa;
+      position: relative;
+      overflow: hidden;
+    }
+    #iphone, #camera {
+      position: absolute;
+      transition: transform 0.1s ease-out;
+    }
+    #iphone {
+      top: 180px;
+      left: 500px;
+    }
+    #camera {
+      top: 100px;
+      left: 200px;
+    }
+  </style>
+</head>
+<body>
+  <div id="main">
+    <div id="iphone">
+      <img src="https://i.ibb.co/HHZk9Lx/i-Phone-7-Plus-Jet-Black.png" width="300"/>
+    </div>
+    <div id="camera">
+      <img src="https://i.ibb.co/Kjx7TRJ/Polaroid-Camera.png" width="300"/>
+    </div>
+  </div>
+
+  <script>
+    const iphone = document.getElementById('iphone');
+    const camera = document.getElementById('camera');
+    const layer = document.getElementById('main');
+
+    layer.addEventListener('mousemove', (e) => {
+      const ivalueX = (e.clientX * -1) / 30;
+      const ivalueY = (e.clientY * -1) / 30;
+      const cvalueX = (e.clientX * -1) / 40;
+      const cvalueY = (e.clientY * -1) / 60;
+
+      iphone.style.transform = `translate3d(${ivalueX}px, ${ivalueY}px, 0)`;
+      camera.style.transform = `translate3d(${cvalueX}px, ${cvalueY}px, 0)`;
+    });
+  </script>
+</body>
 </html>
