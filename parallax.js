@@ -1,10 +1,14 @@
-document.addEventListener('mousemove', parallax);
+var iphone= $('#iphone');
+var camera= $('#camera');
 
-function parallax(e) {
-	this.querySelectorAll('.layer').forEach(layer => {
-		let speed = layer.getAttribute('data-speed');
-		let x = (window.innerWidth - e.pageX * speed) / 100;
-		let y = (window.innerWidth - e.pageY * speed) / 100;
-		layer.style.transform = `translate(${x}px, ${y}px)`;
-	});
-}
+var layer= $('#main');
+
+layer.mousemove(function(e){
+  var ivalueX= (e.pageX * -1 / 30);
+  var ivalueY= (e.pageY * -1 / 30);
+  var cvalueX= (e.pageX * -1 / 40);
+  var cvalueY= (e.pageY * -1 / 60);
+  console.log('ok');
+  iphone.css('transform', 'translate3d('+ivalueX+'px,'+ivalueY+'px, 0)');
+  camera.css('transform', 'translate3d('+cvalueX+'px,'+cvalueY+'px, 0)');
+});
